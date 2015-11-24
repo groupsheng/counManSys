@@ -1,6 +1,7 @@
 $.extend($.fn.datagrid.defaults, {
 	idField: "id",
 	resizeHandle: "both",
+	resizable:true,
 	fit: true,
 	striped: true,
 	multiSort: true,

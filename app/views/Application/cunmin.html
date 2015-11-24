@@ -1,7 +1,31 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px;font-size:22px;">王坛镇上王村档案管理系统</div>
+	<div data-options="region:'north',border:false" style="height:88px;position:relative;">
+		<div class="mis-top-head">
+			<div class="mis-top-logo-bg">
+				<img src="/public/images/loginlogo1.png" />
+			</div>
+			<div class="mis-top-right">
+				<ul>
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<a href="#">帮助</a>
+					</li>
+					<li>
+						<a href="/cunmin/login">退出</a>
+					</li>
+				</ul>
+				<div class="user">
+					<span>文书</span>
+					<i>消息</i>
+					<b>5</b>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div data-options="region:'west',split:true,collapsible:false" style="width:150px;">
 		<div id="mis-menu-page" class="easyui-accordion" data-options="fit:true,border:false">
 			<div title="户籍证明" data-options="selected:true">
@@ -76,6 +100,7 @@
 					<li>用户管理</li>
 					<li>权限管理</li>
 					<li>角色管理</li>
+					<li>组织机构管理</li>
 					<li>授权管理</li>
 				</ul>
 			</div>

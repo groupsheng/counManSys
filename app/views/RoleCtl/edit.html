@@ -6,7 +6,7 @@
 			</th>
 			<td>
 				<input type="hidden" name="role.id" value="${role?.id}">
-				<input class="easyui-textbox" type="text" name="role.name" value="${role?.name}" style="width:100%;height:32px">
+				<input class="easyui-textbox" type="text" name="role.name" value="${role?.name}" data-options="required:true" style="width:100%;height:32px">
 			</td>
 		</tr>
 		<tr>
@@ -14,6 +14,22 @@
 			</th>
 			<td>
 				<input name="role.remark" class="easyui-textbox" value="${role?.remark}" style="width:100%;height:32px">
+			</td>
+		</tr>
+		<tr>
+			<th>关联权限:</th>
+			<td>
+				<input id="role-combobox" class="easyui-combobox" name="powerIds" style="height:50px;" data-options="
+					url: '/houtai/role/comboboxjson?roleId=${role?.id}',
+					method: 'post',
+					valueField: 'id',
+					textField: 'value',
+					groupField: 'group',
+					panelWidth: 200,
+					panelHeight: 100,
+					multiple:true,
+					multiline:true
+				">
 			</td>
 		</tr>
 		<tr>

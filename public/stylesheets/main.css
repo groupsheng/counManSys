@@ -64,6 +64,91 @@ td.page-head-mid {
 	color:#0C0CFB;
 	text-decoration:underline;
 }
+
+/*后台系统顶部的样式*/
+.mis-top-head {
+	height:100%;
+	width:100%;
+	background:url(/public/images/topbg.gif) repeat-x;
+}
+.mis-top-logo-bg {
+	height:100%;
+	background:url(/public/images/topleft.jpg) no-repeat;
+}
+.mis-top-logo-bg img {
+	height:70px;
+	margin-left:10px;
+	margin-top:13px;
+}
+.mis-top-right {
+	position:absolute;
+	height:100%;
+	background:url(/public/images/topright.jpg) no-repeat right;
+	right:0;
+	width:167px;
+	top:0;
+}
+.mis-top-right ul {
+	padding-top:15px;
+	float:right;
+	padding-right:12px;
+	display:block;
+	list-style:none;
+	margin:0;
+}
+.mis-top-right ul li {
+	float:left;
+	padding-left:9px;
+	padding-right:9px;
+	background:url(/public/images/line.gif) no-repeat right;
+	display:block;
+	list-style:none;
+}
+.mis-top-right li a {
+	color:#e9f2f7;
+	font-size:13px;
+}
+.mis-top-right .user {
+	height:30px;
+	background:url(/public/images/ub1.png) repeat-x;
+	clear:both;
+	margin-top:10px;
+	float:right;
+	margin-right:12px;
+	border-radius:30px;
+	white-space:nowrap;
+	position:relative;
+}
+.mis-top-right .user span {
+	display:inline-block;
+	padding-right:10px;
+	background:url(/public/images/user.png) no-repeat 15px 10px;
+	line-height:30px;
+	font-size:14px;
+	color:#b8ceda;
+	padding-left:35px;
+}
+.mis-top-right .user i {
+	display:inline-block;
+	margin-right:5px;
+	font-style:normal;
+	line-height:30px;
+	font-size:14px;
+	color:#b8ceda;
+}
+.mis-top-right .user b {
+	display:inline-block;
+	width:20px;
+	height:18px;
+	background:url(/public/images/msg.png);
+	text-align:center;
+	font-weight:normal;
+	color:#fff;
+	font-size:14px;
+	margin-right:13px;
+	margin-top:7px;
+	line-height:18px;
+}
 /*替换EasyUI样式*/
 /*#mis-menu-page .panel div.accordion-header-selected {
 	background: #3C95C8;
@@ -112,4 +197,8 @@ div.layout-split-west {
 #mis-menu-page .panel-body {
 	border-color:#B9CAD3;
 }*/
+
+.datagrid-row-selected div a {
+	color:#fff;
+}
 /*End for EasyUI样式*/

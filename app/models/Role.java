@@ -3,10 +3,12 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
@@ -34,9 +36,17 @@ public class Role extends GenericModel {
 	/**
 	 * 权限
 	 */
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@OrderBy(value = "orderIndex asc, code asc")
-	public List<Power> powers;
+	public List<Power> powers = new ArrayList<Power>();
+	
+	public String getPowersToString(){
+		String str = "";
+		for(Power p : powers) {
+			str+=("," + p.name);
+		}
+		return str.length()>0 ? str.substring(1):str;
+	}
 	
 	public Role() {
 		

@@ -9,7 +9,8 @@ conf.role = {
 conf.role.url = {
 		page: '/houtai/role/page',
 		edit: '/houtai/role/edit',
-		save: '/houtai/role/save'
+		save: '/houtai/role/save',
+		deleteObj: '/houtai/role/deleteObj'
 };
 conf.role.$pageDom = null;
 conf.role.$datagrid = null;
@@ -23,8 +24,8 @@ conf.role.init = function(){
 		var mis_page = $('#role_edit_dlg');
 		mis_page.dialog({
 			title:'新增角色',
-			width:400,
-			height:300,
+			width:500,
+			height:400,
 			modal:true
 		});
 		$.messager.progress({
@@ -38,6 +39,13 @@ conf.role.init = function(){
 				$.parser.parse(mis_page);
 				$this._bindClick();
 				$.messager.progress('close');
+				/*KindEditor.create('#editor_id',{
+					urlType: 'absolute',
+					cssPath: '/public/kindeditor/plugins/code/prettify.css',
+					uploadJson: '@{FileManager.upload_json()}',
+    				fileManagerJson: '@{FileManager.file_maneger_json()}',
+					allowFileManager: true
+				});*/
 			},
 			error:function(){
 				$.messager.progress('close');
@@ -116,6 +124,37 @@ conf.role.edit = function(id){
 		}
 	});
 }
+conf.role.deleteObj = function(id) {
+	var $this = this;
+	$.messager.progress({
+		msg:'加载中...'
+	});
+	$.ajax({
+		type: "POST",
+		data: {id:id},
+		url:$this.url.deleteObj, 
+		success: function(json){
+			$.messager.progress('close');
+			$.messager.alert('提示',json.data,'info');
+			$this.$datagrid.datagrid('reload');
+		},
+		error:function(){
+			$.messager.progress('close');
+			$.messager.alert('提示','删除失败','error');
+		}
+	});
+};
+
 conf.role.format = function(val, row){
-	return '<a href="javascript:conf.role.edit(\'' + row.id + '\');">编辑</a>';
+	return '<a href="javascript:conf.role.edit(\'' + row.id + '\');">编辑</a><span style=\"margin-left:5px;margin-right:5px;\">|</span><a href="javascript:conf.role.deleteObj(\'' + row.id + '\');">删除</a>';
+};
+
+conf.role.editPowerFormatter = function(row) {
+	var html = '<div>'+row.name+'</div>';
+	return html;
+};
+
+conf.role.editCombobox = function() {
+	
+	//$rolecombobox.setValue('xxx');
 };

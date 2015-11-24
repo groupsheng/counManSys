@@ -10,6 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="@{'/public/easyui/themes/bootstrap/easyui.css'}">
 		<link rel="stylesheet" type="text/css" href="@{'/public/easyui/themes/icon.css'}">
 		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+    	<script charset="utf-8" src="/public/kindeditor/kindeditor.js"></script>
+		<script charset="utf-8" src="/public/kindeditor/plugins/code/prettify.js"></script>
+		<script charset="utf-8" src="/public/kindeditor/lang/zh_CN.js"></script>
+		
     </head>
     <body class="easyui-layout">
         #{doLayout /}
@@ -23,7 +27,7 @@
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/user.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/power.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/role.js'}" charset="utf-8"></script>
-
+		<script type="text/javascript" src="@{'/public/javascripts/plugin/organization.js'}" charset="utf-8"></script>
 	<script>	
 	setTimeout(function(){
 	$('div#mis-menu-page .easyui-tree .tree-node').click(function(){
@@ -59,7 +63,6 @@
 			}
 		});
 	}
-
 	</script>
     </body>
 </html>

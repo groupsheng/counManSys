@@ -17,6 +17,21 @@
 			</td>
 		</tr>
 		<tr>
+			<th>父级权限:
+			</th>
+			<td>
+				<input class="easyui-combobox" name="parentId" value="${power?.parent?.name}" data-options="
+					url: '/houtai/power/comboboxjson',
+					method: 'get',
+					valueField: 'id',
+					textField: 'name',
+					panelWidth: 150,
+					panelHeight: 'auto',
+					formatter: conf.power.editParentFormatter
+				">
+			</td>
+		</tr>
+		<tr>
 			<td colspan="2">
 				<div>
 					<a href="#" id="power-edit-save" class="easyui-linkbutton" iconCls="icon-save">确认</a>

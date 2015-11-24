@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class Organization extends GenericModel {
 	/**
 	 * 子功能
 	 */
-	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@OrderBy(value = "orderIndex asc")
 	public List<Organization> children = null;
 	

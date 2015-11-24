@@ -27,12 +27,30 @@
 			<th>角色:
 			</th>
 			<td>
-				<select class="easyui-combobox" name="userrole" style="width:200px;">
-					<option value="户主">户主</option>
-					<option value="村委">村委</option>
-					<option value="村长">村长</option>
-					<option value="村书记">村书记</option>
-				</select>
+				<input id="user-combobox" class="easyui-combobox" name="roleIds" style="height:50px;" data-options="
+					url: '/houtai/user/comboboxjson?userId=${user?.id}',
+					method: 'post',
+					valueField: 'id',
+					textField: 'value',
+					panelWidth: 200,
+					panelHeight: 100,
+					multiple:true,
+					multiline:true
+				">
+			</td>
+		</tr>
+		<tr>
+			<th>村:
+			</th>
+			<td>
+				<input id="user-org-combobox" class="easyui-combobox" value="${user?.organization?.name}" name="orgId" data-options="
+					url: '/houtai/user/org_comboboxjson',
+					method: 'get',
+					valueField: 'id',
+					textField: 'name',
+					panelWidth: 200,
+					panelHeight: 100
+				">
 			</td>
 		</tr>
 		<tr>

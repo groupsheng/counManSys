@@ -9,7 +9,8 @@ conf.power = {
 conf.power.url = {
 		page: '/houtai/power/page',
 		edit: '/houtai/power/edit',
-		save: '/houtai/power/save'
+		save: '/houtai/power/save',
+		deleteObj: '/houtai/power/deleteObj'
 };
 conf.power.$pageDom = null;
 conf.power.$datagrid = null;
@@ -117,6 +118,31 @@ conf.power.edit = function(id){
 		}
 	});
 }
+conf.power.deleteObj = function(id) {
+	var $this = this;
+	$.messager.progress({
+		msg:'加载中...'
+	});
+	$.ajax({
+		type: "POST",
+		data: {id:id},
+		url:$this.url.deleteObj, 
+		success: function(json){
+			$.messager.progress('close');
+			$.messager.alert('提示',json.data,'info');
+			 $this.$datagrid.datagrid('reload');
+		},
+		error:function(){
+			$.messager.progress('close');
+			$.messager.alert('提示','删除失败','error');
+		}
+	});
+};
 conf.power.format = function(val, row){
-	return '<a href="javascript:conf.power.edit(\'' + row.id + '\');">编辑</a>';
+	return '<a href="javascript:conf.power.edit(\'' + row.id + '\');">编辑</a><span style=\"margin-left:5px;margin-right:5px;\">|</span><a href="javascript:conf.power.deleteObj(\'' + row.id + '\');">删除</a>';
+};
+
+conf.power.editParentFormatter = function(row) {
+	var html = '<div>'+row.name+'</div>';
+	return html;
 };
