@@ -5,6 +5,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Contract;
 import models.Renzhigongshi;
 import models.DatagridJson;
 import models.JsonObj;
@@ -12,7 +13,7 @@ import play.mvc.Controller;
 
 /**
  * @author Coffee
- *
+ * 
  */
 public class RenzhigongshiCtl extends Controller {
 
@@ -28,6 +29,22 @@ public class RenzhigongshiCtl extends Controller {
 			renzhigongshi = Renzhigongshi.findById(id);
 		}
 		render(renzhigongshi);
+	}
+
+	// 删除
+	public static void deleteObj(String id) {
+		JsonObj json = new JsonObj();
+		json.type = "failed";
+		json.data = "记录不存在";
+		if (id != null) {
+			Renzhigongshi renzhigongshi = Renzhigongshi.findById(id);
+			if (renzhigongshi != null) {
+				renzhigongshi.delete();
+				json.type = "success";
+				json.data = "删除成功";
+			}
+		}
+		renderJSON(json);
 	}
 
 	// save.json
@@ -48,11 +65,12 @@ public class RenzhigongshiCtl extends Controller {
 			renzhigongshi_title = "";
 		}
 		List<Renzhigongshi> renzhigongshis = Renzhigongshi
-				.find("renzhigongshi_title like ? ", "%" + renzhigongshi_title + "%")
+				.find("renzhigongshi_title like ? ",
+						"%" + renzhigongshi_title + "%")
 				.from(rows * (page - 1)).fetch(rows * page);
 		int count = Renzhigongshi
-				.find("renzhigongshi_title like ? ", "%" + renzhigongshi_title + "%")
-				.fetch().size();
+				.find("renzhigongshi_title like ? ",
+						"%" + renzhigongshi_title + "%").fetch().size();
 		DatagridJson json = new DatagridJson();
 		json.total = count;
 		json.rows.addAll(renzhigongshis);

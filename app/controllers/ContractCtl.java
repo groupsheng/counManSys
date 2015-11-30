@@ -6,12 +6,13 @@ package controllers;
 import java.util.List;
 
 import models.Contract;
+import models.Cunweihuiyi;
 import models.DatagridJson;
 import models.JsonObj;
 import play.mvc.Controller;
 
 /**
- * @author 	 Coffee
+ * @author Coffee
  * @category 合同协议控制类
  */
 public class ContractCtl extends Controller {
@@ -27,7 +28,24 @@ public class ContractCtl extends Controller {
 		if (id != null) {
 			contract = Contract.findById(id);
 		}
+		System.out.println(" it is a test  " + contract.main_text);
 		render(contract);
+	}
+
+	// 删除
+	public static void deleteObj(String id) {
+		JsonObj json = new JsonObj();
+		json.type = "failed";
+		json.data = "记录不存在";
+		if (id != null) {
+			Contract contract = Contract.findById(id);
+			if (contract != null) {
+				contract.delete();
+				json.type = "success";
+				json.data = "删除成功";
+			}
+		}
+		renderJSON(json);
 	}
 
 	// save.json

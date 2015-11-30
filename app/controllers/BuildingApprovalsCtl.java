@@ -8,13 +8,14 @@ import java.util.List;
 import models.DatagridJson;
 import models.BuildingApprovals;
 import models.JsonObj;
+import models.PensionHealth;
 import play.mvc.Controller;
 
 /**
  * @author Coffee
- *
+ * 
  */
-public class BuildingApprovalsCtl extends Controller{
+public class BuildingApprovalsCtl extends Controller {
 	// 正文模块
 	public static void page() {
 		render();
@@ -27,6 +28,23 @@ public class BuildingApprovalsCtl extends Controller{
 			buildingApprovals = BuildingApprovals.findById(id);
 		}
 		render(buildingApprovals);
+	}
+
+	// 删除
+	public static void deleteObj(String id) {
+		JsonObj json = new JsonObj();
+		json.type = "failed";
+		json.data = "记录不存在";
+		if (id != null) {
+			BuildingApprovals buildingApprovals = BuildingApprovals
+					.findById(id);
+			if (buildingApprovals != null) {
+				buildingApprovals.delete();
+				json.type = "success";
+				json.data = "删除成功";
+			}
+		}
+		renderJSON(json);
 	}
 
 	// save.json
@@ -49,8 +67,7 @@ public class BuildingApprovalsCtl extends Controller{
 		List<BuildingApprovals> buildingApprovalss = BuildingApprovals
 				.find("title like ? ", "%" + title + "%")
 				.from(rows * (page - 1)).fetch(rows * page);
-		int count = BuildingApprovals
-				.find("title like ? ", "%" + title + "%")
+		int count = BuildingApprovals.find("title like ? ", "%" + title + "%")
 				.fetch().size();
 		DatagridJson json = new DatagridJson();
 		json.total = count;

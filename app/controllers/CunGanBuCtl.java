@@ -13,9 +13,9 @@ import play.mvc.Controller;
 
 /**
  * @author Coffee
- *
+ * 
  */
-public class CunGanBuCtl extends Controller{
+public class CunGanBuCtl extends Controller {
 	// 正文模块
 	public static void page() {
 		render();
@@ -28,6 +28,22 @@ public class CunGanBuCtl extends Controller{
 			cunGanBu = cunGanBu.findById(id);
 		}
 		render(cunGanBu);
+	}
+
+	// 删除
+	public static void deleteObj(String id) {
+		JsonObj json = new JsonObj();
+		json.type = "failed";
+		json.data = "记录不存在";
+		if (id != null) {
+			CunGanBu cunGanBu = CunGanBu.findById(id);
+			if (cunGanBu != null) {
+				cunGanBu.delete();
+				json.type = "success";
+				json.data = "删除成功";
+			}
+		}
+		renderJSON(json);
 	}
 
 	// save.json
@@ -50,9 +66,8 @@ public class CunGanBuCtl extends Controller{
 		List<CunGanBu> cunGanBus = Butiekaizhi
 				.find("title like ? ", "%" + title + "%")
 				.from(rows * (page - 1)).fetch(rows * page);
-		int count = CunGanBu
-				.find("title like ? ", "%" + title + "%")
-				.fetch().size();
+		int count = CunGanBu.find("title like ? ", "%" + title + "%").fetch()
+				.size();
 		DatagridJson json = new DatagridJson();
 		json.total = count;
 		json.rows.addAll(cunGanBus);
