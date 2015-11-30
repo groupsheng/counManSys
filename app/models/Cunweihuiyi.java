@@ -3,6 +3,7 @@
  */
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -49,11 +50,18 @@ public class Cunweihuiyi extends GenericModel {
 	public String post_date;
 	
 	// 正文
+	@Column(length=3000)
 	public String main_text;
 
 	// 作者--默认当前登陆文书 
 	public String author;
 
+	// 是否公开
+	public boolean is_public;
+	
+	// 组织机构
+	public String organization;
+	
 	// 附件
 	public String appendix;
 	

@@ -42,6 +42,12 @@ public class Renzhigongshi extends GenericModel{
 	// 发布者--默认当前登陆文书 
 	public String author;
 
+	// 是否公开
+	public boolean is_public;
+		
+	// 组织机构
+	public String organization;
+		
 	// 附件
 	public String appendix;
 	

@@ -40,6 +40,9 @@ public class CunRongCunMao extends GenericModel{
 	// 作者--默认当前登陆文书 
 	public String author;
 
+	// 组织机构
+	public String organization;
+		
 	// 附件
 	public String appendix;
 	
