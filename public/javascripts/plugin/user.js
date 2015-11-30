@@ -14,6 +14,7 @@ conf.user.url = {
 };
 conf.user.$pageDom = null;
 conf.user.$datagrid = null;
+conf.user.$form = null;
 conf.user.init = function(){
 	var $this = this;
 	$('#user-page-add').click(function(){
@@ -22,11 +23,11 @@ conf.user.init = function(){
 			$('<div id="user_edit_dlg"></div>').appendTo('body');
 		}
 		var mis_page = $('#user_edit_dlg');
+		mis_page.empty();
 		mis_page.dialog({
 			title:'新增用户',
-			width:400,
-			height:300,
-			modal:true
+			width:530,
+			height:250
 		});
 		$.messager.progress({
 			msg:'加载中...'
@@ -54,7 +55,10 @@ conf.user._bindClick = function(){
 		$.messager.progress({
 			msg:'加载中...'
 		});
-		
+		if(!$this.$form.form('validate')){
+			$.messager.progress('close');
+			return;
+		}
 		var data = $('#user_edit_dlg').find('form').serialize();
 		$.ajax({
 			   type: "POST",
@@ -79,6 +83,7 @@ conf.user._bindClick = function(){
 	$('#user_edit_dlg').find('#user-edit-cancel').click(function(){
 		$('#user_edit_dlg').dialog("close");
 	});
+	$this.$form = $('#user_edit_dlg').find('form');
 };
 conf.user.search = function(){
 	 this.$datagrid.datagrid('load', {
@@ -93,11 +98,11 @@ conf.user.edit = function(id){
 		$('<div id="user_edit_dlg"></div>').appendTo('body');
 	}
 	var mis_page = $('#user_edit_dlg');
+	mis_page.empty();
 	mis_page.dialog({
-		title:'新增用户',
-		width:400,
-		height:300,
-		modal:true
+		title:'编辑用户',
+		width:530,
+		height:250
 	});
 	$.messager.progress({
 		msg:'加载中...'

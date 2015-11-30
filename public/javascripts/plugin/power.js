@@ -14,6 +14,7 @@ conf.power.url = {
 };
 conf.power.$pageDom = null;
 conf.power.$datagrid = null;
+conf.power.$form = null;
 conf.power.init = function(){
 	var $this = this;
 	$('#power-page-add').click(function(){
@@ -22,11 +23,11 @@ conf.power.init = function(){
 			$('<div id="power_edit_dlg"></div>').appendTo('body');
 		}
 		var mis_page = $('#power_edit_dlg');
+		mis_page.empty();
 		mis_page.dialog({
 			title:'新增权限',
-			width:400,
-			height:300,
-			modal:true
+			width:300,
+			height:250
 		});
 		$.messager.progress({
 			msg:'加载中...'
@@ -54,7 +55,10 @@ conf.power._bindClick = function(){
 		$.messager.progress({
 			msg:'加载中...'
 		});
-		
+		if(!$this.$form.form('validate')){
+			$.messager.progress('close');
+			return;
+		}
 		var data = $('#power_edit_dlg').find('form').serialize();
 		$.ajax({
 			   type: "POST",
@@ -79,6 +83,7 @@ conf.power._bindClick = function(){
 	$('#power_edit_dlg').find('#power-edit-cancel').click(function(){
 		$('#power_edit_dlg').dialog("close");
 	});
+	$this.$form = $('#power_edit_dlg').find('form');
 };
 conf.power.search = function(){
 	 this.$datagrid.datagrid('load', {
@@ -93,11 +98,11 @@ conf.power.edit = function(id){
 		$('<div id="power_edit_dlg"></div>').appendTo('body');
 	}
 	var mis_page = $('#power_edit_dlg');
+	mis_page.empty();
 	mis_page.dialog({
 		title:'编辑权限',
-		width:400,
-		height:300,
-		modal:true
+		width:300,
+		height:250
 	});
 	$.messager.progress({
 		msg:'加载中...'

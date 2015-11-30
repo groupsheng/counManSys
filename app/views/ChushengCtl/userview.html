@@ -1,0 +1,19 @@
+<table id="chusheng-dlg-table" class="easyui-datagrid" style="width:100%;"
+		data-options="url:'/houtai/chusheng/userview_get',queryParams:{'userid':'${userid}'}"
+	    toolbar="#search-chusheng-dlg">
+	<thead>
+		<tr>
+			<th field="id" hidden="true">id</th>
+			<th field="name" width="120" align="center">姓名</th>
+			<th field="sex" width="120" align="center">性别</th>
+			<th field="birthday" width="140" align="center">出生日期</th>
+			<th field="update" width="40" align="center" formatter="conf.chusheng.userview_format">操作</th>
+		</tr>
+	</thead>
+</table>
+<div id="search-chusheng-dlg" class="search-bar">
+	<input type="hidden" name="userid" value="${userid}">
+	<span>姓名:</span>
+	<input name="name">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="javascript:conf.chusheng.userview_search();">查询</a>
+</div>

@@ -14,6 +14,7 @@ conf.organization.url = {
 };
 conf.organization.$pageDom = null;
 conf.organization.$datagrid = null;
+conf.organization.$form = null;
 conf.organization.init = function(){
 	var $this = this;
 	$('#organization-page-add').click(function(){
@@ -22,11 +23,11 @@ conf.organization.init = function(){
 			$('<div id="organization_edit_dlg"></div>').appendTo('body');
 		}
 		var mis_page = $('#organization_edit_dlg');
+		mis_page.empty();
 		mis_page.dialog({
 			title:'新增机构',
-			width:400,
-			height:300,
-			modal:true
+			width:300,
+			height:250
 		});
 		$.messager.progress({
 			msg:'加载中...'
@@ -54,7 +55,10 @@ conf.organization._bindClick = function(){
 		$.messager.progress({
 			msg:'加载中...'
 		});
-		
+		if(!$this.$form.form('validate')){
+			$.messager.progress('close');
+			return;
+		}
 		var data = $('#organization_edit_dlg').find('form').serialize();
 		$.ajax({
 			   type: "POST",
@@ -79,6 +83,7 @@ conf.organization._bindClick = function(){
 	$('#organization_edit_dlg').find('#organization-edit-cancel').click(function(){
 		$('#organization_edit_dlg').dialog("close");
 	});
+	$this.$form = $('#organization_edit_dlg').find('form');
 };
 conf.organization.search = function(){
 	 this.$datagrid.datagrid('load', {
@@ -93,11 +98,11 @@ conf.organization.edit = function(id){
 		$('<div id="organization_edit_dlg"></div>').appendTo('body');
 	}
 	var mis_page = $('#organization_edit_dlg');
+	mis_page.empty();
 	mis_page.dialog({
 		title:'编辑机构',
-		width:400,
-		height:300,
-		modal:true
+		width:300,
+		height:250
 	});
 	$.messager.progress({
 		msg:'加载中...'

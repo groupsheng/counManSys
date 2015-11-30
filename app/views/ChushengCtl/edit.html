@@ -1,0 +1,35 @@
+<div class="mis-page">
+<form>
+	<table>
+		<tr>
+			<th>姓名:
+			</th>
+			<td>
+				<input type="hidden" name="chusheng.id" value="${chusheng?.id}">
+				<input type="hidden" name="userid" value="${userid}">
+				<input class="easyui-textbox" type="text" name="chusheng.name" value="${chusheng?.name}" data-options="required:true" style="width:100%;height:32px">
+			</td>
+			<th>性别:
+			</th>
+			<td>
+				<input name="chusheng.sex" class="easyui-textbox" value="${chusheng?.sex}" data-options="required:true" style="width:100%;height:32px">
+			</td>
+		</tr>
+		<tr>
+			<th>出生日期:
+			</th>
+			<td>
+				<input class="easyui-textbox" type="text" name="chusheng.birthday" value="${chusheng?.birthday}" data-options="required:true" style="width:100%;height:32px">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<div>
+					<a href="#" id="chusheng-edit-save" class="easyui-linkbutton" iconCls="icon-save">确认</a>
+					<a href="#" id="chusheng-edit-cancel" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+	</form>
+</div>

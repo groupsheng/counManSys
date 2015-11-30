@@ -4,6 +4,11 @@
 
 # Home page
 GET     /                                       Application.index
+GET		/villagecadres							Application.villagecadres
+GET		/livelihoodhotspots						Application.livelihoodhotspots
+GET		/publicannouncement						Application.publicannouncement
+GET		/villagedynamic							Application.villagedynamic
+GET		/aboutus								Application.aboutus
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -16,6 +21,8 @@ GET		/cunmin/login							LoginCtl.cunminLogin
 
 GET		/cunqing								Application.cunqing
 GET		/cunqing/login							LoginCtl.cunqingLogin
+
+GET		/personHome								Application.personHome
 
 # User
 GET		/houtai/user/page						UserCtl.page
@@ -56,10 +63,16 @@ POST	/houtai/organization/get				OrganizationCtl.get
 POST	/houtai/organization/deleteObj			OrganizationCtl.deleteObj
 GET		/houtai/organization/comboboxjson		OrganizationCtl.comboboxjson
 
-GET		/cunmin/huji/chusheng					HujiCtl.chusheng
-GET		/cunmin/huji/shenfen					HujiCtl.shenfen
-POST	/cunmin/huji							HujiCtl.userjson
-GET 	/cunmin/huji/shenfen/page				HujiCtl.shenfen_page
+# Chusheng
+GET		/houtai/chusheng/page					ChushengCtl.page
+POST	/houtai/chusheng/get					ChushengCtl.get
+POST	/houtai/chusheng/edit					ChushengCtl.edit
+GET		/houtai/chusheng/edit					ChushengCtl.edit
+POST	/houtai/chusheng/save					ChushengCtl.save
+POST 	/houtai/chusheng/userview				ChushengCtl.userview
+GET 	/houtai/chusheng/userview				ChushengCtl.userview
+POST	/houtai/chusheng/userview_get			ChushengCtl.userview_get
+
 
 # Cunweihuiyi
 

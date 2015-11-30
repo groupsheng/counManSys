@@ -6,14 +6,14 @@
 			</th>
 			<td>
 				<input type="hidden" name="role.id" value="${role?.id}">
-				<input class="easyui-textbox" type="text" name="role.name" value="${role?.name}" data-options="required:true" style="width:100%;height:32px">
+				<input class="easyui-textbox" type="text" name="role.name" value="${role?.name}" data-options="required:true,validType:['specialChar','notNull','trim']" style="width:100%;height:32px">
 			</td>
 		</tr>
 		<tr>
 			<th>描述:
 			</th>
 			<td>
-				<input name="role.remark" class="easyui-textbox" value="${role?.remark}" style="width:100%;height:32px">
+				<input name="role.remark" class="easyui-textbox" value="${role?.remark}" data-options="required:true,validType:['specialChar','notNull','trim']" style="width:100%;height:32px">
 			</td>
 		</tr>
 		<tr>

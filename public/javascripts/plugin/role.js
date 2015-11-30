@@ -14,6 +14,7 @@ conf.role.url = {
 };
 conf.role.$pageDom = null;
 conf.role.$datagrid = null;
+conf.role.$form = null;
 conf.role.init = function(){
 	var $this = this;
 	$('#role-page-add').click(function(){
@@ -22,11 +23,11 @@ conf.role.init = function(){
 			$('<div id="role_edit_dlg"></div>').appendTo('body');
 		}
 		var mis_page = $('#role_edit_dlg');
+		mis_page.empty();
 		mis_page.dialog({
 			title:'新增角色',
-			width:500,
-			height:400,
-			modal:true
+			width:300,
+			height:250
 		});
 		$.messager.progress({
 			msg:'加载中...'
@@ -39,13 +40,6 @@ conf.role.init = function(){
 				$.parser.parse(mis_page);
 				$this._bindClick();
 				$.messager.progress('close');
-				/*KindEditor.create('#editor_id',{
-					urlType: 'absolute',
-					cssPath: '/public/kindeditor/plugins/code/prettify.css',
-					uploadJson: '@{FileManager.upload_json()}',
-    				fileManagerJson: '@{FileManager.file_maneger_json()}',
-					allowFileManager: true
-				});*/
 			},
 			error:function(){
 				$.messager.progress('close');
@@ -61,7 +55,10 @@ conf.role._bindClick = function(){
 		$.messager.progress({
 			msg:'加载中...'
 		});
-		
+		if(!$this.$form.form('validate')){
+			$.messager.progress('close');
+			return;
+		}
 		var data = $('#role_edit_dlg').find('form').serialize();
 		$.ajax({
 			   type: "POST",
@@ -86,6 +83,7 @@ conf.role._bindClick = function(){
 	$('#role_edit_dlg').find('#role-edit-cancel').click(function(){
 		$('#role_edit_dlg').dialog("close");
 	});
+	$this.$form = $('#role_edit_dlg').find('form');
 };
 conf.role.search = function(){
 	 this.$datagrid.datagrid('load', {
@@ -99,11 +97,11 @@ conf.role.edit = function(id){
 		$('<div id="role_edit_dlg"></div>').appendTo('body');
 	}
 	var mis_page = $('#role_edit_dlg');
+	mis_page.empty();
 	mis_page.dialog({
-		title:'新增用户',
-		width:400,
-		height:300,
-		modal:true
+		title:'编辑角色',
+		width:300,
+		height:250
 	});
 	$.messager.progress({
 		msg:'加载中...'
@@ -152,9 +150,4 @@ conf.role.format = function(val, row){
 conf.role.editPowerFormatter = function(row) {
 	var html = '<div>'+row.name+'</div>';
 	return html;
-};
-
-conf.role.editCombobox = function() {
-	
-	//$rolecombobox.setValue('xxx');
 };

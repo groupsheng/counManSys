@@ -1,3 +1,61 @@
+/*图标*/
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-hetong {
+	background: url('/public/images/icons/hetong.png') no-repeat center center;
+}
+.icon-houtai {
+	background: url('/public/images/icons/houtai.png') no-repeat center center;
+}
+.icon-huji {
+	background: url('/public/images/icons/huji.png') no-repeat center center;
+}
+.icon-hunyin {
+	background: url('/public/images/icons/hunyin.png') no-repeat center center;
+}
+.icon-jishu {
+	background: url('/public/images/icons/jishu.png') no-repeat center center;
+}
+.icon-quanshu {
+	background: url('/public/images/icons/quanshu.png') no-repeat center center;
+}
+.icon-rongyu {
+	background: url('/public/images/icons/rongyu.png') no-repeat center center;
+}
+.icon-shengxiang {
+	background: url('/public/images/icons/shengxiang.png') no-repeat center center;
+}
+.icon-xueli {
+	background: url('/public/images/icons/xueli.png') no-repeat center center;
+}
+.icon-yiliao {
+	background: url('/public/images/icons/yiliao.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+.icon-baoxian {
+	background: url('/public/images/icons/baoxian.png') no-repeat center center;
+}
+
+/*End图标 */
+
 body {
 	font-family:'微软雅黑';
 }
@@ -6,6 +64,32 @@ body {
 	height:100%;
 	padding:0;
 	position:relative;
+}
+.mis-page>form>table th {
+	text-align:right;
+}
+.mis-page>form>table td {
+	text-align:left;
+}
+.mis-page>form>table th,
+.mis-page>form>table td {
+	padding: 8px;
+}
+.mis-page>form>table td>div {
+	text-align:center;
+}
+.mis-page>form>table td>div>a {
+	margin-left:5px;
+	margin-right:5px;
+}
+.search-bar {
+	padding:2px 5px;
+}
+.search-bar input {
+	height:26px;line-height:26px;border:1px solid #ccc;
+}
+.mis-page>form>table * {
+	font-size:14px;
 }
 .mis-page-table {
 	width:100%;
@@ -22,10 +106,7 @@ body {
 .mis-page-head td {
 	width:33.33%;
 }
-td.page-head-mid {
-	border-left:1px solid #0092DC;
-	border-right:1px solid #0092DC;
-}
+
 .mis-page-title {
 	padding:0px 8px;
 	height:35px;
@@ -200,5 +281,18 @@ div.layout-split-west {
 
 .datagrid-row-selected div a {
 	color:#fff;
+}
+.panel-with-icon {
+	margin-left:5px;
+}
+#mis-menu-page .tree-file{
+	background: url('/public/images/icons/docs.png') no-repeat center center;
+}
+#mis-menu-page .tree-title {
+	margin-left:3px;
+}
+#mis-menu-page .tree-node{
+	padding-top:3px;
+	padding-bottom:3px;
 }
 /*End for EasyUI样式*/
