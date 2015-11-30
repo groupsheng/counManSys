@@ -13,9 +13,9 @@ import play.mvc.Controller;
 
 /**
  * @author Coffee
- *
+ * 
  */
-public class ActivityCtl extends Controller{
+public class ActivityCtl extends Controller {
 	// 正文模块
 	public static void page() {
 		render();
@@ -28,6 +28,22 @@ public class ActivityCtl extends Controller{
 			activity = activity.findById(id);
 		}
 		render(activity);
+	}
+
+	// 删除
+	public static void deleteObj(String id) {
+		JsonObj json = new JsonObj();
+		json.type = "failed";
+		json.data = "记录不存在";
+		if (id != null) {
+			Activity activity = Activity.findById(id);
+			if (activity != null) {
+				activity.delete();
+				json.type = "success";
+				json.data = "删除成功";
+			}
+		}
+		renderJSON(json);
 	}
 
 	// save.json
@@ -50,9 +66,8 @@ public class ActivityCtl extends Controller{
 		List<Activity> activities = Activity
 				.find("title like ? ", "%" + title + "%")
 				.from(rows * (page - 1)).fetch(rows * page);
-		int count = Activity
-				.find("title like ? ", "%" + title + "%")
-				.fetch().size();
+		int count = Activity.find("title like ? ", "%" + title + "%").fetch()
+				.size();
 		DatagridJson json = new DatagridJson();
 		json.total = count;
 		json.rows.addAll(activities);
