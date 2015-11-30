@@ -6,42 +6,57 @@
 			</th>
 			<td>
 				<input type="hidden" name="contract.id" value="${contract?.id}">
-				<input class="easyui-textbox" type="text" name="contract.contract_title" value="${contract?.contract_title}" style="width:100%;height:32px">
+				<input class="easyui-textbox" type="text" name="contract.contract_title" value="${contract?.contract_title}" data-options="required:true,validType:['specialChar','notNull','trim']" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>甲方:
 			</th>
 			<td>
-				<input name="contract.jiafang" class="easyui-textbox" value="${contract?.jiafang}" style="width:100%;height:32px">
+				<input name="contract.jiafang" class="easyui-textbox" value="${contract?.jiafang}" data-options="required:true,validType:['specialChar','notNull','trim']" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>乙方:
 			</th>
 			<td>
-				<input name="contract.yifang" class="easyui-textbox" value="${contract?.yifang}" style="width:100%;height:32px">
+				<input name="contract.yifang" class="easyui-textbox" value="${contract?.yifang}" data-options="required:true,validType:['specialChar','notNull','trim']" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>签订时间:
 			</th>
 			<td>
-				<input name="contract.sign_date" class="easyui-textbox" value="${contract?.sign_date}" style="width:100%;height:32px">
+				<input name="contract.sign_date" class="easyui-datebox" value="${contract?.sign_date}" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>发布时间:
 			</th>
 			<td>
-				<input name="contract.post_date" class="easyui-textbox" value="${contract?.post_date}" style="width:100%;height:32px">
+				<input name="contract.post_date" class="easyui-datebox" value="${contract?.post_date}" style="width:100%;height:28px">
+			</td>
+		</tr>
+		<tr>
+			<th>是否公开:
+			</th>
+			<td>
+				<input name="contract.is_public" type="radio" #{if contract?.is_public == true} checked="checked"#{/if}  value="true" style="width:20px;height:20px">是</input>
+				<input name="contract.is_public" type="radio" #{if contract?.is_public == false} checked="checked"#{/if}  value="false" style="width:20px;height:20px">否</input>
 			</td>
 		</tr>
 		<tr>
 			<th>发布人:
 			</th>
 			<td>
-				<input name="contract.author" class="easyui-textbox" value="${contract?.author}" style="width:100%;height:32px">
+				<input name="contract.author" class="easyui-textbox" value="${contract?.author}" data-options="validType:['name','trim']" style="width:100%;height:28px">
+			</td>
+		</tr>
+		<tr>
+			<th>合同协议:
+			</th>
+			<td>
+				<textarea name="contract.main_text" style="width:700px;height:400px;">${contract?.main_text}</textarea>
 			</td>
 		</tr>
 		<tr>

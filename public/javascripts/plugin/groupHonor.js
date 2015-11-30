@@ -10,10 +10,13 @@ conf.groupHonor = {
 conf.groupHonor.url = {
 		page: '/houtai/groupHonor/page',
 		edit: '/houtai/groupHonor/edit',
-		save: '/houtai/groupHonor/save'
+		save: '/houtai/groupHonor/save',
+		deleteObj: '/houtai/groupHonor/deleteObj'
 };
 conf.groupHonor.$pageDom = null;
 conf.groupHonor.$datagrid = null;
+conf.groupHonor.editor = null;
+conf.groupHonor.$form = null;
 conf.groupHonor.init = function(){
 	var $this = this;
 	$('#groupHonor-page-add').click(function(){
@@ -24,8 +27,8 @@ conf.groupHonor.init = function(){
 		var mis_page = $('#groupHonor_edit_dlg');
 		mis_page.dialog({
 			title:'新增集体荣誉',
-			width:400,
-			height:300,
+			width:800,
+			height:600,
 			modal:true
 		});
 		$.messager.progress({
@@ -50,11 +53,23 @@ conf.groupHonor.init = function(){
 };
 conf.groupHonor._bindClick = function(){
 	var $this = this;
+	$this.editor = KindEditor.create('textarea[name="groupHonor.main_text"]',
+			{
+				urlType : 'absolute',
+				cssPath : '/public/kindeditor/plugins/code/prettify.css',
+				uploadJson : '/filemanager/upload_json',
+				fileManagerJson : '/filemanager/filemanager_json',
+				allowFileManager : true
+			});
 	$('#groupHonor_edit_dlg').find('#groupHonor-edit-save').click(function(){
 		$.messager.progress({
 			msg:'加载中...'
 		});
-		
+		if (!$this.$form.form('validate')) {
+			$.messager.progress('close');
+			return;
+		}
+		$this.editor.sync();
 		var data = $('#groupHonor_edit_dlg').find('form').serialize();
 		$.ajax({
 			   type: "POST",
@@ -79,6 +94,7 @@ conf.groupHonor._bindClick = function(){
 	$('#groupHonor_edit_dlg').find('#groupHonor-edit-cancel').click(function(){
 		$('#groupHonor_edit_dlg').dialog("close");
 	});
+	$this.$form = $('#groupHonor_edit_dlg').find('form');
 };
 conf.groupHonor.search = function(){
 	 this.$datagrid.datagrid('load', {
@@ -94,8 +110,8 @@ conf.groupHonor.edit = function(id){
 	var mis_page = $('#groupHonor_edit_dlg');
 	mis_page.dialog({
 		title:'新增集体荣誉',
-		width:400,
-		height:300,
+		width:800,
+		height:600,
 		modal:true
 	});
 	$.messager.progress({
@@ -116,7 +132,27 @@ conf.groupHonor.edit = function(id){
 			$.messager.alert('提示','请求失败','error');
 		}
 	});
-}
+};
+conf.groupHonor.deleteObj = function(id) {
+	var $this = this;
+	$.messager.progress({
+		msg:'加载中...'
+	});
+	$.ajax({
+		type: "POST",
+		data: {id:id},
+		url:$this.url.deleteObj, 
+		success: function(json){
+			$.messager.progress('close');
+			$.messager.alert('提示',json.data,'info');
+			$this.$datagrid.datagrid('reload');
+		},
+		error:function(){
+			$.messager.progress('close');
+			$.messager.alert('提示','删除失败','error');
+		}
+	});
+};
 conf.groupHonor.format = function(val, row){
-	return '<a href="javascript:conf.groupHonor.edit(\'' + row.id + '\');">编辑</a>';
+	return '<a href="javascript:conf.groupHonor.edit(\'' + row.id + '\');">编辑</a><span style=\"margin-left:5px;margin-right:5px;\">|</span><a href="javascript:conf.groupHonor.deleteObj(\'' + row.id + '\');">删除</a>';
 };

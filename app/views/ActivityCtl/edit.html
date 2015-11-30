@@ -2,46 +2,53 @@
 <form>
 	<table>
 		<tr>
-			<th>活动标题:
+			<th>标题:
 			</th>
 			<td>
 				<input type="hidden" name="activity.id" value="${activity?.id}">
-				<input class="easyui-textbox" type="text" name="activity.title" value="${activity?.title}" style="width:100%;height:32px">
+				<input class="easyui-textbox" type="text" name="activity.title" value="${activity?.title}" data-options="required:true,validType:['specialChar','notNull','trim']" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>活动时间:
 			</th>
 			<td>
-				<input name="activity.activity_date" class="easyui-textbox" value="${activity?.activity_date}" style="width:100%;height:32px">
+				<input name="activity.activity_date" class="easyui-datebox" value="${activity?.activity_date}" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>活动地点:
 			</th>
 			<td>
-				<input name="activity.activity_place" class="easyui-textbox" value="${activity?.activity_place}" style="width:100%;height:32px">
+				<input name="activity.activity_place" class="easyui-textbox" value="${activity?.activity_place}" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>参与人员:
 			</th>
 			<td>
-				<input name="activity.involved_perple" class="easyui-textbox" value="${activity?.involved_perple}" style="width:100%;height:32px">
+				<input name="activity.involved_perple" class="easyui-textbox" value="${activity?.involved_perple}" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>发布日期:
 			</th>
 			<td>
-				<input name="activity.post_date" class="easyui-textbox" value="${activity?.post_date}" style="width:100%;height:32px">
+				<input name="activity.post_date" class="easyui-datebox" value="${activity?.post_date}" style="width:100%;height:28px">
 			</td>
 		</tr>
 		<tr>
 			<th>发布人:
 			</th>
 			<td>
-				<input name="activity.author" class="easyui-textbox" value="${activity?.author}" style="width:100%;height:32px">
+				<input name="activity.author" class="easyui-textbox" value="${activity?.author}" data-options="validType:['name','trim']" style="width:100%;height:28px">
+			</td>
+		</tr>
+		<tr>
+			<th>活动记录:
+			</th>
+			<td>
+				<textarea name="activity.main_text" style="width:700px;height:400px;">${activity?.main_text}</textarea>
 			</td>
 		</tr>
 		<tr>

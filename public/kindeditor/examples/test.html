@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/public/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="/public/kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="/public/kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="/public/kindeditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="/public/kindeditor/plugins/code/prettify.js"></script>
+	<script type="text/javascript">
+var editor;
+			KindEditor.ready(function(K) {
+				alert('xx');
+				editor = K.create('textarea[name="keditor"]', {
+					urlType: 'absolute',
+					cssPath: '/public/kindeditor/plugins/code/prettify.css',
+					uploadJson: '@{FileManager.upload_json()}',
+    				fileManagerJson: '@{FileManager.file_maneger_json()}',
+					allowFileManager: true
+				});
+			});
+			</script>
+
+<div>
+
+		<form>
+	<table>
+		
+		<tr>
+			<th>描述:
+			</th>
+			<td>
+
+				<textarea name="keditor" style="width:700px;height:400px;visibility:hidden;display:block;" value="${role?.remark}"></textarea>
+				
+			</td>
+		</tr>
+		
+	</table>
+	</form>
+</div>

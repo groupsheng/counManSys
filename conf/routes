@@ -81,6 +81,7 @@ POST	/houtai/cunweihuiyi/edit				CunweihuiyiCtl.edit
 GET		/houtai/cunweihuiyi/edit				CunweihuiyiCtl.edit
 POST	/houtai/cunweihuiyi/save				CunweihuiyiCtl.save
 POST	/houtai/cunweihuiyi/get					CunweihuiyiCtl.get
+POST	/houtai/cunweihuiyi/deleteObj			CunweihuiyiCtl.deleteObj
 
 # Contract
 
@@ -89,6 +90,7 @@ POST	/houtai/contract/edit					ContractCtl.edit
 GET		/houtai/contract/edit					ContractCtl.edit
 POST	/houtai/contract/save					ContractCtl.save
 POST	/houtai/contract/get					ContractCtl.get
+POST	/houtai/contract/deleteObj				ContractCtl.deleteObj
 
 # Renzhigongshi
 
@@ -97,6 +99,7 @@ POST	/houtai/renzhigongshi/edit					RenzhigongshiCtl.edit
 GET		/houtai/renzhigongshi/edit					RenzhigongshiCtl.edit
 POST	/houtai/renzhigongshi/save					RenzhigongshiCtl.save
 POST	/houtai/renzhigongshi/get					RenzhigongshiCtl.get
+POST	/houtai/renzhigongshi/deleteObj				RenzhigongshiCtl.deleteObj
 
 # FinanceCost
 
@@ -105,6 +108,7 @@ POST	/houtai/financeCost/edit					FinanceCostCtl.edit
 GET		/houtai/financeCost/edit					FinanceCostCtl.edit
 POST	/houtai/financeCost/save					FinanceCostCtl.save
 POST	/houtai/financeCost/get						FinanceCostCtl.get
+POST	/houtai/financeCost/deleteObj				FinanceCostCtl.deleteObj
 
 # PensionHealth
 
@@ -113,6 +117,7 @@ POST	/houtai/pensionHealth/edit					PensionHealthCtl.edit
 GET		/houtai/pensionHealth/edit					PensionHealthCtl.edit
 POST	/houtai/pensionHealth/save					PensionHealthCtl.save
 POST	/houtai/pensionHealth/get					PensionHealthCtl.get
+POST	/houtai/pensionHealth/deleteObj				PensionHealthCtl.deleteObj
 
 # BuildingApprovals
 
@@ -121,6 +126,7 @@ POST	/houtai/buildingApprovals/edit				BuildingApprovalsCtl.edit
 GET		/houtai/buildingApprovals/edit				BuildingApprovalsCtl.edit
 POST	/houtai/buildingApprovals/save				BuildingApprovalsCtl.save
 POST	/houtai/buildingApprovals/get				BuildingApprovalsCtl.get
+POST	/houtai/buildingApprovals/deleteObj			BuildingApprovalsCtl.deleteObj
 
 # GuquanCooperation
 
@@ -129,6 +135,7 @@ POST	/houtai/guquanCooperation/edit				GuquanCooperationCtl.edit
 GET		/houtai/guquanCooperation/edit				GuquanCooperationCtl.edit
 POST	/houtai/guquanCooperation/save				GuquanCooperationCtl.save
 POST	/houtai/guquanCooperation/get				GuquanCooperationCtl.get
+POST	/houtai/guquanCooperation/deleteObj			GuquanCooperationCtl.deleteObj
 
 
 # Butiekaizhi
@@ -138,6 +145,7 @@ POST	/houtai/butiekaizhi/edit			ButiekaizhiCtl.edit
 GET		/houtai/butiekaizhi/edit			ButiekaizhiCtl.edit
 POST	/houtai/butiekaizhi/save			ButiekaizhiCtl.save
 POST	/houtai/butiekaizhi/get				ButiekaizhiCtl.get
+POST	/houtai/butiekaizhi/deleteObj		ButiekaizhiCtl.deleteObj
 
 
 # Gongzikaizhi
@@ -147,6 +155,7 @@ POST	/houtai/gongzikaizhi/edit				GongzikaizhiCtl.edit
 GET		/houtai/gongzikaizhi/edit				GongzikaizhiCtl.edit
 POST	/houtai/gongzikaizhi/save				GongzikaizhiCtl.save
 POST	/houtai/gongzikaizhi/get				GongzikaizhiCtl.get
+POST	/houtai/gongzikaizhi/deleteObj			GongzikaizhiCtl.deleteObj
 
 # Jitiliyi
 
@@ -155,6 +164,7 @@ POST	/houtai/jitiliyi/edit				JitiliyiCtl.edit
 GET		/houtai/jitiliyi/edit				JitiliyiCtl.edit
 POST	/houtai/jitiliyi/save				JitiliyiCtl.save
 POST	/houtai/jitiliyi/get				JitiliyiCtl.get
+POST	/houtai/jitiliyi/deleteObj			JitiliyiCtl.deleteObj
 
 
 # Zhengfubuzhu
@@ -164,6 +174,7 @@ POST	/houtai/zhengfubuzhu/edit				ZhengfubuzhuCtl.edit
 GET		/houtai/zhengfubuzhu/edit				ZhengfubuzhuCtl.edit
 POST	/houtai/zhengfubuzhu/save				ZhengfubuzhuCtl.save
 POST	/houtai/zhengfubuzhu/get				ZhengfubuzhuCtl.get
+POST	/houtai/zhengfubuzhu/deleteObj			ZhengfubuzhuCtl.deleteObj
 
 # Meeting
 
@@ -172,6 +183,7 @@ POST	/houtai/meeting/edit				MeetingCtl.edit
 GET		/houtai/meeting/edit				MeetingCtl.edit
 POST	/houtai/meeting/save				MeetingCtl.save
 POST	/houtai/meeting/get					MeetingCtl.get
+POST	/houtai/meeting/deleteObj			MeetingCtl.deleteObj
 
 # Activity
 
@@ -180,6 +192,7 @@ POST	/houtai/activity/edit				ActivityCtl.edit
 GET		/houtai/activity/edit				ActivityCtl.edit
 POST	/houtai/activity/save				ActivityCtl.save
 POST	/houtai/activity/get				ActivityCtl.get
+POST	/houtai/activity/deleteObj			ActivityCtl.deleteObj
 
 # CunGanBu
 
@@ -188,6 +201,7 @@ POST	/houtai/cunGanBu/edit				CunGanBuCtl.edit
 GET		/houtai/cunGanBu/edit				CunGanBuCtl.edit
 POST	/houtai/cunGanBu/save				CunGanBuCtl.save
 POST	/houtai/cunGanBu/get				CunGanBuCtl.get
+POST	/houtai/cunGanBu/deleteObj			CunGanBuCtl.deleteObj
 
 # CunRongCunMao
 
@@ -196,6 +210,7 @@ POST	/houtai/cunRongCunMao/edit				CunRongCunMaoCtl.edit
 GET		/houtai/cunRongCunMao/edit				CunRongCunMaoCtl.edit
 POST	/houtai/cunRongCunMao/save				CunRongCunMaoCtl.save
 POST	/houtai/cunRongCunMao/get				CunRongCunMaoCtl.get
+POST	/houtai/cunRongCunMao/deleteObj			CunRongCunMaoCtl.deleteObj
 
 # GroupHonor
 
@@ -204,6 +219,7 @@ POST	/houtai/groupHonor/edit				GroupHonorCtl.edit
 GET		/houtai/groupHonor/edit				GroupHonorCtl.edit
 POST	/houtai/groupHonor/save				GroupHonorCtl.save
 POST	/houtai/groupHonor/get				GroupHonorCtl.get
+POST	/houtai/groupHonor/deleteObj		GroupHonorCtl.deleteObj
 
 # PersonalHonor
 
@@ -212,6 +228,12 @@ POST	/houtai/personalHonor/edit				PersonalHonorCtl.edit
 GET		/houtai/personalHonor/edit				PersonalHonorCtl.edit
 POST	/houtai/personalHonor/save				PersonalHonorCtl.save
 POST	/houtai/personalHonor/get				PersonalHonorCtl.get
+POST	/houtai/personalHonor/deleteObj			PersonalHonorCtl.deleteObj
+
+
+# FileUpload By KindEditor
+POST    /filemanager/upload_json   		        FileManager.upload_json
+POST    /filemanager/filemanager_json  		    FileManager.filemanager_json
 
 
 # Catch all

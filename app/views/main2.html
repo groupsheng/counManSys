@@ -10,15 +10,23 @@
 		<link rel="stylesheet" type="text/css" href="@{'/public/easyui/themes/bootstrap/easyui.css'}">
 		<link rel="stylesheet" type="text/css" href="@{'/public/easyui/themes/icon.css'}">
 		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+		
+		<link rel="stylesheet" href="/public/kindeditor/themes/default/default.css" />
+		<link rel="stylesheet" href="/public/kindeditor/plugins/code/prettify.css" />
+		
     </head>
     <body class="easyui-layout">
         #{doLayout /}
-        
        
         #{get 'moreScripts' /}
-		<script type="text/javascript" src="@{'/public/easyui/jquery.min.js'}" charset="utf-8"></script>
+        <script type="text/javascript" src="@{'/public/easyui/jquery.min.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/easyui/jquery.easyui.min.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/easyui/locale/easyui-lang-zh_CN.js'}" charset="utf-8"></script>
+
+		<script charset="utf-8" src="/public/kindeditor/kindeditor.js"></script>
+		<script charset="utf-8" src="/public/kindeditor/plugins/code/prettify.js"></script>
+		<script charset="utf-8" src="/public/kindeditor/lang/zh_CN.js"></script>
+
 		<script type="text/javascript" src="@{'/public/javascripts/conf.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/cunweihuiyi.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/contract.js'}" charset="utf-8"></script>
@@ -40,7 +48,6 @@
 				
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/groupHonor.js'}" charset="utf-8"></script>
 		<script type="text/javascript" src="@{'/public/javascripts/plugin/personalHonor.js'}" charset="utf-8"></script>		
-				
 				
 	<script>	
 	setTimeout(function(){
@@ -65,6 +72,7 @@
 			success: function(htm){
 				mis_page.html(htm);
 				$.parser.parse(mis_page);
+	
 				plugin.$pageDom = mis_page;
 				if(plugin.init != null && typeof(plugin.init)=="function") {
 					plugin.init();

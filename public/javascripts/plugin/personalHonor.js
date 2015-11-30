@@ -10,10 +10,13 @@ conf.personalHonor = {
 conf.personalHonor.url = {
 		page: '/houtai/personalHonor/page',
 		edit: '/houtai/personalHonor/edit',
-		save: '/houtai/personalHonor/save'
+		save: '/houtai/personalHonor/save',
+		deleteObj: '/houtai/personalHonor/deleteObj'
 };
 conf.personalHonor.$pageDom = null;
 conf.personalHonor.$datagrid = null;
+conf.personalHonor.$form = null;
+conf.personalHonor.editor = null;
 conf.personalHonor.init = function(){
 	var $this = this;
 	$('#personalHonor-page-add').click(function(){
@@ -24,8 +27,8 @@ conf.personalHonor.init = function(){
 		var mis_page = $('#personalHonor_edit_dlg');
 		mis_page.dialog({
 			title:'新增个人荣誉',
-			width:400,
-			height:300,
+			width:800,
+			height:600,
 			modal:true
 		});
 		$.messager.progress({
@@ -36,6 +39,7 @@ conf.personalHonor.init = function(){
 			url:$this.url.edit, 
 			success: function(htm){
 				mis_page.html(htm);
+				
 				$.parser.parse(mis_page);
 				$this._bindClick();
 				$.messager.progress('close');
@@ -50,11 +54,23 @@ conf.personalHonor.init = function(){
 };
 conf.personalHonor._bindClick = function(){
 	var $this = this;
+	$this.editor = KindEditor.create('textarea[name="personalHonor.main_text"]',
+			{
+				urlType : 'absolute',
+				cssPath : '/public/kindeditor/plugins/code/prettify.css',
+				uploadJson : '/filemanager/upload_json',
+				fileManagerJson : '/filemanager/filemanager_json',
+				allowFileManager : true
+			});
 	$('#personalHonor_edit_dlg').find('#personalHonor-edit-save').click(function(){
 		$.messager.progress({
 			msg:'加载中...'
 		});
-		
+		if (!$this.$form.form('validate')) {
+			$.messager.progress('close');
+			return;
+		}
+		$this.editor.sync();
 		var data = $('#personalHonor_edit_dlg').find('form').serialize();
 		$.ajax({
 			   type: "POST",
@@ -79,6 +95,7 @@ conf.personalHonor._bindClick = function(){
 	$('#personalHonor_edit_dlg').find('#personalHonor-edit-cancel').click(function(){
 		$('#personalHonor_edit_dlg').dialog("close");
 	});
+	$this.$form = $('#personalHonor_edit_dlg').find('form');
 };
 conf.personalHonor.search = function(){
 	 this.$datagrid.datagrid('load', {
@@ -94,8 +111,8 @@ conf.personalHonor.edit = function(id){
 	var mis_page = $('#personalHonor_edit_dlg');
 	mis_page.dialog({
 		title:'新增个人荣誉',
-		width:400,
-		height:300,
+		width:800,
+		height:600,
 		modal:true
 	});
 	$.messager.progress({
@@ -116,7 +133,27 @@ conf.personalHonor.edit = function(id){
 			$.messager.alert('提示','请求失败','error');
 		}
 	});
-}
+};
+conf.personalHonor.deleteObj = function(id) {
+	var $this = this;
+	$.messager.progress({
+		msg:'加载中...'
+	});
+	$.ajax({
+		type: "POST",
+		data: {id:id},
+		url:$this.url.deleteObj, 
+		success: function(json){
+			$.messager.progress('close');
+			$.messager.alert('提示',json.data,'info');
+			$this.$datagrid.datagrid('reload');
+		},
+		error:function(){
+			$.messager.progress('close');
+			$.messager.alert('提示','删除失败','error');
+		}
+	});
+};
 conf.personalHonor.format = function(val, row){
-	return '<a href="javascript:conf.personalHonor.edit(\'' + row.id + '\');">编辑</a>';
+	return '<a href="javascript:conf.personalHonor.edit(\'' + row.id + '\');">编辑</a><span style=\"margin-left:5px;margin-right:5px;\">|</span><a href="javascript:conf.personalHonor.deleteObj(\'' + row.id + '\');">删除</a>';
 };
